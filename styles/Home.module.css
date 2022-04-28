@@ -4,12 +4,12 @@
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-top: 3rem;
 }
 
 .footer {
@@ -113,4 +113,16 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.mainnav ul{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.mainnav ul li{
+  list-style: none;
+  margin: 0 24px;
+  font-weight: bold;
 }
