@@ -7,8 +7,6 @@ export default function handler(req, res) {
       if (err){
           res.status(500).json({error:"No such blog found"})
       }
-        console.log(data)
-        console.log(req.query)
         res.status(200).json(JSON.parse(data))
       
   })

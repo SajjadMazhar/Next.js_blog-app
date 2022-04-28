@@ -6,16 +6,11 @@ import styles from '../styles/Blog.module.css'
 // step 1 : collect all the files from blogdata directory
 // step 2 : iterate through them and display them
 
-const Blog = () => {
-    const [blogs, setBlogs] = useState([])
-
+const Blog = (props) => {
+    console.log(props)
+    const [blogs, setBlogs] = useState(props.allBlogs)
     useEffect(()=>{
-        fetch("http://localhost:3000/api/blogs").then((a)=>{
-            return a.json()
-        }).then(data=>{
-            console.log(data)
-            setBlogs(data)
-        })
+        
     },[])
   return (
     <div className='styles.container'>
@@ -44,5 +39,14 @@ const Blog = () => {
     </div>
   )
 }
+
+export async function getServerSideProps(context) {
+    let data = await fetch("http://localhost:3000/api/blogs")
+    let allBlogs = await data.json()
+    
+    return {
+      props: {allBlogs}, // will be passed to the page component as props
+    }
+  }
 
 export default Blog
