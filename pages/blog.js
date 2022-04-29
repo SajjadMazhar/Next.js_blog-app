@@ -1,17 +1,15 @@
 import Link from 'next/link'
 import React, {useEffect, useState} from 'react'
 import styles from '../styles/Blog.module.css'
-
+import * as fs from 'fs';
 
 // step 1 : collect all the files from blogdata directory
 // step 2 : iterate through them and display them
 
 const Blog = (props) => {
     console.log(props)
-    const [blogs, setBlogs] = useState(props.allBlogs)
-    useEffect(()=>{
-        
-    },[])
+    const [blogs, setBlogs] = useState(props.allblogs)
+
   return (
     <div className='styles.container'>
         <main className={styles.main}>
@@ -23,7 +21,7 @@ const Blog = (props) => {
                 <p>JavaScript is the language used to design the logic behind web</p>
             </div> */}
             {
-                blogs.map((blogItem)=>{
+              blogs.map((blogItem)=>{
                     return(
                         <div className={styles.blogItem} key={blogItem.slug}>
                         <Link href={`/blogpost/${blogItem.slug}`}>
@@ -40,12 +38,22 @@ const Blog = (props) => {
   )
 }
 
-export async function getServerSideProps(context) {
-    let data = await fetch("http://localhost:3000/api/blogs")
-    let allBlogs = await data.json()
+
+
+
+export async function getStaticProps(context) {
+    let data = await fs.promises.readdir("./blogdata", "utf-8")
+    let myfile;
+    let allblogs = []
+    for(let i=0; i<data.length; i++){
+        const item = data[i]
+        myfile = await fs.promises.readFile("blogdata/"+item, "utf-8")
+        allblogs.push(JSON.parse(myfile))
+    }
+    
     
     return {
-      props: {allBlogs}, // will be passed to the page component as props
+      props: {allblogs}, // will be passed to the page component as props
     }
   }
 
