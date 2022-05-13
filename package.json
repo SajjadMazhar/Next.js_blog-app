@@ -1,21 +1,21 @@
 {
-  "name": "hunting-coders",
-  "version": "0.1.0",
+  "name": "huntingcoder",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export":"next build && next export"
+    "export": "next build && next export"
   },
   "dependencies": {
-    "next": "12.1.5",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "next": "12.0.10",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-infinite-scroll-component": "^6.1.0"
   },
   "devDependencies": {
-    "eslint": "8.14.0",
-    "eslint-config-next": "12.1.5"
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.10"
   }
 }

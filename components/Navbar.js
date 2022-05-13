@@ -1,9 +1,7 @@
 import React from 'react'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-
-
-const NavBar = () => {
+const Navbar = () => {
   return (
     <nav className={styles.mainnav}>
         <ul>
@@ -16,4 +14,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default Navbar
